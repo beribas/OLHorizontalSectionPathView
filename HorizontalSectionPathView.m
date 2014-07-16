@@ -25,17 +25,22 @@
 
 -(void)awakeFromNib
 {
+    [self initialSetup];
+}
+
+- (void)setupWithTitles:(NSArray *)titles delegate:(id<HorizontalSectionPathViewDelegate>) delegate {
+    self.titles = titles;
+    self.delegate = delegate;
+    [self setupContentView];
+}
+
+- (void) initialSetup {
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
     self.scrollView.delegate = self;
     self.scrollView.scrollEnabled = YES;
     self.scrollView.bounces = NO;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     [self addSubview:self.scrollView];
-}
-
-- (void)setupWithTitles:(NSArray *)titles {
-    self.titles = titles;
-    [self setupContentView];
 }
 
 - (void) setupContentView {
@@ -97,6 +102,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        [self initialSetup];
     }
     return self;
 }

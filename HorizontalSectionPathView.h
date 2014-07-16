@@ -15,6 +15,5 @@
 
 @property (weak, nonatomic) id<HorizontalSectionPathViewDelegate> delegate;
 
-- (void) setupWithTitles: (NSArray*) titles;
-
+- (void)setupWithTitles:(NSArray *)titles delegate:(id<HorizontalSectionPathViewDelegate>) delegate;
 @end
